@@ -84,7 +84,7 @@ class Extrapolators(object):
         # Crop the boundary data if required.
         self.xrange = kwargs.get('xrange', self.map_boundary_data.xrange)
         self.yrange = kwargs.get('yrange', self.map_boundary_data.yrange)
-        self.map_boundary_data = self.map_boundary_data.submap(self.xrange, self.yrange)
+        # self.map_boundary_data = self.map_boundary_data.submap(self.xrange, self.yrange)
         self.xobsrange = self.map_boundary_data.xrange
         self.yobsrange = self.map_boundary_data.yrange
 
@@ -92,8 +92,8 @@ class Extrapolators(object):
         #print 'help(u): ' + str(help(u))
         #print '\n\n'
         self.zrange = kwargs.get('zrange', u.Quantity([0.0, 1.0] * u.Mm) )
-        self.shape = np.asarray([self.map_boundary_data.data.shape[1],
-                      self.map_boundary_data.data.shape[0],
+        self.shape = np.asarray([self.map_boundary_data.data.shape[0],
+                      self.map_boundary_data.data.shape[1],
                       long(kwargs.get('zshape', 1L))])
         self.filepath = kwargs.get('filepath', None)
         self.routine = kwargs.get('extrapolator_routine', type(self))

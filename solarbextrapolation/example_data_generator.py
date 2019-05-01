@@ -80,7 +80,7 @@ def generate_example_data(shape, xrange, yrange, *argv):
         arr_poles = arr_args
 
     # Build the empty data array
-    arr_data = np.zeros((shape[1], shape[0]))
+    arr_data = np.zeros((shape[0], shape[1]))
 
     # Grid pixel shape
     qua_pixel = u.Quantity([ ( xrange[1] - xrange[0] ) / shape[0], ( yrange[1] - yrange[0] ) / shape[1] ])
@@ -97,8 +97,8 @@ def generate_example_data(shape, xrange, yrange, *argv):
 
 
     # Iterate through the 2D array/matrix.
-    for i in range(0,shape[0]):     # Row/Y
-        for j in range(0,shape[1]): # Column/X
+    for i in range(0,shape[0]):     # Row/X
+        for j in range(0,shape[1]): # Column/Y
             # The current position
             floXPrime = i * qua_pixel[0]
             floYPrime = j * qua_pixel[1]
@@ -123,7 +123,7 @@ def generate_example_data(shape, xrange, yrange, *argv):
                 flo_value += flo_An_cont
 
             # Now add this to the data array.
-            arr_data[j][i] = flo_value
+            arr_data[i][j] = flo_value
 
     # Now return the 2D numpy array.
     return arr_data
@@ -170,9 +170,9 @@ def dummyDataToMap(data, xrange, yrange, **kwargs):
 if __name__ == '__main__':
     # Generate an example map
     # The input parameters:
-    arr_grid_shape = [ 20, 22 ]         # [ y-size, x-size ]
-    qua_xrange = u.Quantity([ -10.0, 10.0 ] * u.arcsec)
-    qua_yrange = u.Quantity([ -11.0, 11.0 ] * u.arcsec)
+    arr_grid_shape = [ 22, 20 ]         # [ x-size, y-size ]
+    qua_xrange = u.Quantity([ -11.0, 11.0 ] * u.arcsec)
+    qua_yrange = u.Quantity([ -10.0, 10.0 ] * u.arcsec)
 
     # Manual Pole Details
     #arrA0 = [ u.Quantity([ 1.0, 1.0 ] * u.arcsec), 2.0 * u.arcsec, 0.2 * u.T ]
