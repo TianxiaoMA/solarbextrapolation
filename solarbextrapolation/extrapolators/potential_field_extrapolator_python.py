@@ -51,9 +51,9 @@ def phi_extrapolation_python(boundary, shape, Dx, Dy, Dz):
     z_submerge = Dz / np.sqrt(2.0 * np.pi)
 
     # Create the empty numpy volume array.
-    D = np.empty((shape[0], shape[1], shape[2]), dtype=np.float)
+    D = np.empty((shape[1], shape[0], shape[2]), dtype=np.float)
 
-    i_prime, j_prime = np.indices((shape[0], shape[1]))
+    i_prime, j_prime = np.indices((shape[1], shape[0]))
     xP = i_prime * Dx
     yP = j_prime * Dy
 
@@ -72,5 +72,5 @@ def phi_extrapolation_python(boundary, shape, Dx, Dy, Dz):
                 G_n = Gn_5_2_29(x, y, z, xP, yP, DxDy, z_submerge)
 
                 # Now add this to the 3D grid.
-                D[i, j, k] = np.sum(boundary * G_n * DxDy)
+                D[j, i, k] = np.sum(boundary * G_n * DxDy)
     return D

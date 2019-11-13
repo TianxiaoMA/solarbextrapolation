@@ -33,9 +33,9 @@ import numpy as np
 # quantities.
 
 # Input parameters:
-arr_grid_shape = [ 22, 20, 20 ]         # [ x-size, y-size ]
-xrange = u.Quantity([ -11.0, 11.0 ] * u.arcsec)
-yrange = u.Quantity([ -10.0, 10.0 ] * u.arcsec)
+arr_grid_shape = [ 20, 22, 20 ]         # [ y-size, x-size ]
+xrange = u.Quantity([ -10.0, 10.0 ] * u.arcsec)
+yrange = u.Quantity([ -11.0, 11.0 ] * u.arcsec)
 zrange = u.Quantity([ 0,     20.0 ] * u.arcsec)
 
 ##############################################################################
